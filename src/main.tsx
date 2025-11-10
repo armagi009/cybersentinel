@@ -11,15 +11,26 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { RouteErrorBoundary } from '@/components/RouteErrorBoundary';
 import '@/index.css'
 import { HomePage } from '@/pages/HomePage'
-
+import { DashboardPage } from '@/pages/DashboardPage';
+import { QuestionnairePage } from '@/pages/QuestionnairePage';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
     errorElement: <RouteErrorBoundary />,
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />,
+      }
+    ]
   },
+  {
+    path: "/questionnaire/:id",
+    element: <QuestionnairePage />,
+    errorElement: <RouteErrorBoundary />,
+  }
 ]);
-
 // Do not touch this code
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -28,4 +39,3 @@ createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </StrictMode>,
 )
-   

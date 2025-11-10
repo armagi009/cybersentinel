@@ -1,10 +1,10 @@
 import { CyberSentinelLayout } from '@/components/layout/CyberSentinelLayout';
-import { ChatInterface } from '@/components/chat/ChatInterface';
+import { DashboardPage } from '@/pages/DashboardPage';
 import { Toaster } from '@/components/ui/sonner';
 export function HomePage() {
   return (
     <CyberSentinelLayout>
-      <ChatInterface />
+      <DashboardPage />
       <Toaster richColors closeButton />
     </CyberSentinelLayout>
   );

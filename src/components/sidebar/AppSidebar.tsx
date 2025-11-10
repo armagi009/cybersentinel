@@ -6,6 +6,7 @@ import {
   LifeBuoy,
   Bot,
 } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
@@ -14,18 +15,12 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
 const navItems = [
-  { icon: ShieldCheck, label: 'Dashboard', href: '#' },
-  { icon: FileText, label: 'Questionnaires', href: '#' },
-  { icon: BarChart2, label: 'Reports', href: '#' },
-  { icon: Settings, label: 'Settings', href: '#' },
-];
-const mockQuestionnaires = [
-  { title: 'Vendor Security Review', status: 'in-progress', progress: 75 },
-  { title: 'SOC 2 Type II Audit', status: 'completed', progress: 100 },
-  { title: 'Client Onboarding', status: 'new', progress: 0 },
+  { icon: ShieldCheck, label: 'Dashboard', href: '/' },
+  { icon: FileText, label: 'Questionnaires', href: '/questionnaires' },
+  { icon: BarChart2, label: 'Reports', href: '/reports' },
+  { icon: Settings, label: 'Settings', href: '/settings' },
 ];
 export function AppSidebar() {
   return (
@@ -44,14 +39,22 @@ export function AppSidebar() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
-                      variant={item.label === 'Dashboard' ? 'secondary' : 'ghost'}
+                      variant={'ghost'}
                       className="w-full justify-start gap-3"
                       asChild
                     >
-                      <a href={item.href}>
+                      <NavLink
+                        to={item.href}
+                        className={({ isActive }) =>
+                          cn(
+                            "flex items-center w-full",
+                            isActive && "bg-secondary text-secondary-foreground"
+                          )
+                        }
+                      >
                         <item.icon className="size-5" />
                         <span>{item.label}</span>
-                      </a>
+                      </NavLink>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="right">{item.label}</TooltipContent>
