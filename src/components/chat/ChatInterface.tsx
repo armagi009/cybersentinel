@@ -5,7 +5,7 @@ import { useChatStore } from '@/hooks/useChatStore';
 import { ChatMessage } from './ChatMessage';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';interface BotProps {children?: React.ReactNode;className?: string;style?: React.CSSProperties;[key: string]: unknown;}
 export function ChatInterface() {
   const messages = useChatStore((s) => s.messages);
   const status = useChatStore((s) => s.status);
@@ -36,15 +36,15 @@ export function ChatInterface() {
       </div>
       <ScrollArea className="flex-1" ref={scrollAreaRef}>
         <div className="p-4 md:p-6 space-y-6">
-          {messages.map((msg) => (
-            <ChatMessage key={msg.id} message={msg} />
-          ))}
-          {status === 'thinking' && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-start gap-3"
-            >
+          {messages.map((msg) =>
+          <ChatMessage key={msg.id} message={msg} />
+          )}
+          {status === 'thinking' &&
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-start gap-3">
+
               <div className="flex-shrink-0 size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                 <Bot className="size-5" />
               </div>
@@ -53,35 +53,35 @@ export function ChatInterface() {
                 <span className="text-sm">Thinking...</span>
               </div>
             </motion.div>
-          )}
+          }
         </div>
       </ScrollArea>
       <div className="p-4 border-t bg-background/80 backdrop-blur-sm">
         <AnimatePresence mode="wait">
-          {status === 'user_input' && options && (
-            <motion.div
-              key="options"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-wrap gap-2"
-            >
-              {options.map((option) => (
-                <Button
-                  key={option}
-                  variant="outline"
-                  size="sm"
-                  onClick={() => addUserMessage(option)}
-                  className="transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95"
-                >
+          {status === 'user_input' && options &&
+          <motion.div
+            key="options"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-wrap gap-2">
+
+              {options.map((option) =>
+            <Button
+              key={option}
+              variant="outline"
+              size="sm"
+              onClick={() => addUserMessage(option)}
+              className="transition-all duration-200 hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95">
+
                   {option}
                 </Button>
-              ))}
+            )}
             </motion.div>
-          )}
+          }
         </AnimatePresence>
       </div>
-    </div>
-  );
+    </div>);
+
 }

@@ -2,10 +2,10 @@ import { AppSidebar } from '@/components/sidebar/AppSidebar';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-type CyberSentinelLayoutProps = {
-  children: React.ReactNode;
-};
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';interface ShieldCheckProps {children?: React.ReactNode;className?: string;
+  style?: React.CSSProperties;
+  [key: string]: unknown;
+}type CyberSentinelLayoutProps = {children: React.ReactNode;};
 export function CyberSentinelLayout({ children }: CyberSentinelLayoutProps) {
   return (
     <div className="min-h-screen w-full bg-muted/40 flex">
@@ -37,6 +37,6 @@ export function CyberSentinelLayout({ children }: CyberSentinelLayoutProps) {
         </main>
       </div>
       <ThemeToggle className="absolute top-4 right-4 z-50" />
-    </div>
-  );
+    </div>);
+
 }
