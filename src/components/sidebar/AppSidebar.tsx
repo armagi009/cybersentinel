@@ -4,9 +4,8 @@ import {
   BarChart2,
   Settings,
   LifeBuoy,
-  Database,
+  Bot,
 } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
@@ -15,13 +14,18 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 const navItems = [
-  { icon: ShieldCheck, label: 'Dashboard', href: '/' },
-  { icon: FileText, label: 'Questionnaires', href: '/' },
-  { icon: BarChart2, label: 'Reports', href: '/reports' },
-  { icon: Database, label: 'Knowledge Base', href: '/knowledge-base' },
-  { icon: Settings, label: 'Settings', href: '/settings' },
+  { icon: ShieldCheck, label: 'Dashboard', href: '#' },
+  { icon: FileText, label: 'Questionnaires', href: '#' },
+  { icon: BarChart2, label: 'Reports', href: '#' },
+  { icon: Settings, label: 'Settings', href: '#' },
+];
+const mockQuestionnaires = [
+  { title: 'Vendor Security Review', status: 'in-progress', progress: 75 },
+  { title: 'SOC 2 Type II Audit', status: 'completed', progress: 100 },
+  { title: 'Client Onboarding', status: 'new', progress: 0 },
 ];
 export function AppSidebar() {
   return (
@@ -39,19 +43,16 @@ export function AppSidebar() {
               <li key={item.label}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <NavLink
-                      to={item.href}
-                      end={item.href === '/'}
-                      className={({ isActive }) =>
-                        cn(
-                          'flex items-center w-full justify-start gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground',
-                          isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground"
-                        )
-                      }
+                    <Button
+                      variant={item.label === 'Dashboard' ? 'secondary' : 'ghost'}
+                      className="w-full justify-start gap-3"
+                      asChild
                     >
-                      <item.icon className="size-5" />
-                      <span>{item.label}</span>
-                    </NavLink>
+                      <a href={item.href}>
+                        <item.icon className="size-5" />
+                        <span>{item.label}</span>
+                      </a>
+                    </Button>
                   </TooltipTrigger>
                   <TooltipContent side="right">{item.label}</TooltipContent>
                 </Tooltip>
@@ -75,7 +76,7 @@ export function AppSidebar() {
         </div>
       </nav>
       <footer className="mt-4 text-center text-xs text-muted-foreground">
-        <p>Built with ���️ at Cloudflare</p>
+        <p>Built with ❤️ at Cloudflare</p>
         <p className="mt-1">Note: AI requests may be rate-limited.</p>
       </footer>
     </aside>
