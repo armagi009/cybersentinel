@@ -1,9 +1,12 @@
 import { Bot, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import type { Message } from '@/hooks/useChatStore';
+import type { Message as BackendMessage } from '../../worker/types';
+// Extend the backend message type for potential frontend-specific properties like 'jargon'
+type Message = BackendMessage & {
+  jargon?: { term: string; explanation: string };
+};
 type ChatMessageProps = {
   message: Message;
 };

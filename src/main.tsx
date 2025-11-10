@@ -11,23 +11,34 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { RouteErrorBoundary } from '@/components/RouteErrorBoundary';
 import '@/index.css'
 import { HomePage } from '@/pages/HomePage'
-import { DashboardPage } from '@/pages/DashboardPage';
 import { QuestionnairePage } from '@/pages/QuestionnairePage';
+import { ReportsPage } from '@/pages/ReportsPage';
+import { KnowledgeBasePage } from '@/pages/KnowledgeBasePage';
+import { SettingsPage } from '@/pages/SettingsPage';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
     errorElement: <RouteErrorBoundary />,
-    children: [
-      {
-        index: true,
-        element: <DashboardPage />,
-      }
-    ]
   },
   {
     path: "/questionnaire/:id",
     element: <QuestionnairePage />,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/reports",
+    element: <ReportsPage />,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/knowledge-base",
+    element: <KnowledgeBasePage />,
+    errorElement: <RouteErrorBoundary />,
+  },
+  {
+    path: "/settings",
+    element: <SettingsPage />,
     errorElement: <RouteErrorBoundary />,
   }
 ]);
