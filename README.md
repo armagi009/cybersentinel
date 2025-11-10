@@ -4,7 +4,7 @@
 
 CyberSentinel is a sophisticated, AI-driven platform designed to revolutionize how Small and Medium-sized Businesses (SMBs) handle cybersecurity due diligence. It transforms the arduous process of completing security questionnaires into an intuitive, conversational, and educational experience. The core of the platform is an AI agent that guides users through every step, from initial business profiling to generating polished, submission-ready reports.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/armagi009/cybersentinel)
 
 ## Key Features
 
@@ -92,7 +92,7 @@ This project is designed for easy deployment to Cloudflare's global network.
 
 Alternatively, you can deploy directly from your GitHub repository with a single click.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/armagi009/cybersentinel)
 
 ## Project Structure
 
