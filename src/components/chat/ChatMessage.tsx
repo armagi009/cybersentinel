@@ -3,10 +3,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import type { Message as BackendMessage } from "../../../worker/types";
-
-type Message = BackendMessage & {
-  jargon?: {term: string;explanation: string;};
-};
+type Message = BackendMessage & { jargon?: { term: string; explanation: string } | null };
 type ChatMessageProps = {
   message: Message;
 };

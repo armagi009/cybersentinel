@@ -18,7 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 const navItems = [
   { icon: ShieldCheck, label: 'Dashboard', href: '/' },
-  { icon: FileText, label: 'Questionnaires', href: '/questionnaire/new' }, // Example link
+  { icon: FileText, label: 'Questionnaires', href: '/' },
   { icon: BarChart2, label: 'Reports', href: '/reports' },
   { icon: Database, label: 'Knowledge Base', href: '/knowledge-base' },
   { icon: Settings, label: 'Settings', href: '/settings' },
